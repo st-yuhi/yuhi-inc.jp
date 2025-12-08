@@ -1,12 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>株式会社 結灯</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>株式会社 結灯｜Integrated Wellness & Education</title>
+  <style>
+    /* 全体の基本設定 */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+                   "YuGothic", "Yu Gothic", sans-serif;
+      color: #222;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ヘッダー */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      background: #ffffff;
+      border-bottom: 1px solid #f0f0f0;
+      z-index: 100;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.12em;
+    }
+    .logo span {
+      color: #ff3b30; /* アクセントカラー */
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 8px;
+      margin-left: 32px;
+    }
+    .btn-nav {
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 2px;
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+      letter-spacing: 0.1em;
+    }
+    .btn-nav--outline {
+      background: #fff;
+      color: #111;
+    }
+
+    /* メインビジュアル */
+    .hero {
+      margin-top: 72px; /* 固定ヘッダー分 */
+      min-height: calc(100vh - 72px);
+      display: flex;
+    }
+    .hero-left,
+    .hero-right {
+      flex: 1;
+    }
+
+    .hero-left {
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 60px;
+    }
+    .hero-inner {
+      max-width: 480px;
+    }
+    .hero-tagline {
+      display: inline-block;
+      background: #ff3b30;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 6px 12px;
+      margin-bottom: 24px;
+    }
+    .hero-copy {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 32px;
+    }
+    .btn-cta {
+      display: inline-block;
+      background: #ff3b30;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 2px;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-right {
+      background: #f5f5f5;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 40px 40px 0;
+    }
+    .hero-image-placeholder {
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 4 / 5;
+      background: #ccc;
+      border-radius: 16px 16px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* セクション用の余白（あとで中身を作る） */
+    section {
+      padding: 80px 40px;
+    }
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      header {
+        padding: 0 16px;
+      }
+      nav ul {
+        display: none; /* 最初はSPナビは非表示にしておく（後で実装でもOK） */
+      }
+      .hero {
+        flex-direction: column;
+      }
+      .hero-left {
+        padding: 56px 20px 32px;
+      }
+      .hero-right {
+        padding: 0 20px 40px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My GitHub Pages Site</h1>
-    <p>This is my first GitHub Pages deployment!</p>
+  <!-- ヘッダー -->
+  <header>
+    <div class="logo">Yuhi<span>.</span>INC</div>
+    <nav>
+      <ul>
+        <li><a href="#concept">CONCEPT</a></li>
+        <li><a href="#service">SERVICE</a></li>
+        <li><a href="#price">PRICE</a></li>
+        <li><a href="#access">ACCESS</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="#recruit" class="btn-nav btn-nav--outline">求人情報</a>
+      <a href="#contact" class="btn-nav">お問い合わせ</a>
+    </div>
+  </header>
+
+  <!-- ヒーローエリア -->
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-inner">
+          <div class="hero-tagline">発育発達 × ウェルネス × 教育</div>
+          <p class="hero-copy">
+            心と身体と学びをデザインし、<br>
+            「一生もののコンディション」をつくる。
+          </p>
+          <p class="hero-sub">
+            株式会社 結灯（ゆうひ）は、パーソナルトレーニング・
+            発育発達サポート・教育プログラムを通して、<br>
+            親子と地域のウェルネスをトータルで支える会社です。
+          </p>
+          <a href="#contact" class="btn-cta">無料カウンセリング・体験のお申し込み</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <!-- ここに後で実際の画像を入れる：背景だけ仮置き -->
+        <div class="hero-image-placeholder">
+          ここにメインビジュアル（画像）を配置
+        </div>
+      </div>
+    </section>
+
+    <!-- ここから下はあとで中身を作っていく -->
+    <section id="concept">
+      <h2>CONCEPT</h2>
+      <p>ここにコンセプトを書いていきます。</p>
+    </section>
+
+    <section id="service">
+      <h2>SERVICE</h2>
+      <p>発育発達サポート、パーソナルトレーニング、マタニティケアなど。</p>
+    </section>
+
+    <section id="price">
+      <h2>PRICE</h2>
+      <p>料金プランをここに記載します。</p>
+    </section>
+
+    <section id="access">
+      <h2>ACCESS</h2>
+      <p>所在地・アクセス情報。</p>
+    </section>
+
+    <section id="contact">
+      <h2>CONTACT</h2>
+      <p>お問い合わせフォームやLINEリンクなどを置く予定。</p>
+    </section>
+  </main>
 </body>
 </html>
