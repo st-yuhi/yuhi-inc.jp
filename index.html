@@ -1,24 +1,35 @@
-<!DOCTYPE html>
+<!D<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>株式会社 結灯｜Integrated Wellness & Education Business</title>
+
   <style>
-    /* 全体の基本設定 */
+    :root {
+      --charcoal: #1A202C;
+      --orange:  #FF4500;
+      --green:   #3CB371;
+      --white:   #FFFFFF;
+      --bg-light:#F5F7FA;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
                    "YuGothic", "Yu Gothic", sans-serif;
-      color: #222;
-      line-height: 1.6;
+      color: var(--charcoal);
+      background: var(--bg-light);
+      line-height: 1.7;
     }
+
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    /* ヘッダー */
+    /* ------- ヘッダー ------- */
     header {
       position: fixed;
       top: 0;
@@ -29,17 +40,20 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 48px;
-      background: #ffffff;
-      border-bottom: 1px solid #f0f0f0;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid #E5E7EB;
+      backdrop-filter: blur(10px);
       z-index: 100;
     }
+
     .logo {
       font-weight: 700;
       font-size: 20px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
+      color: var(--charcoal);
     }
     .logo span {
-      color: #ff3b30; /* アクセントカラー */
+      color: var(--orange);
     }
 
     nav ul {
@@ -47,7 +61,27 @@
       gap: 28px;
       list-style: none;
       font-size: 14px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.25s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     .nav-right {
@@ -55,118 +89,291 @@
       gap: 8px;
       margin-left: 32px;
     }
+
     .btn-nav {
-      font-size: 13px;
-      padding: 10px 18px;
-      border-radius: 2px;
-      border: 1px solid #111;
-      background: #111;
-      color: #fff;
-      letter-spacing: 0.1em;
-    }
-    .btn-nav--outline {
-      background: #fff;
-      color: #111;
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--charcoal);
+      background: var(--charcoal);
+      color: var(--white);
+      letter-spacing: 0.12em;
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
-    /* メインビジュアル */
-    .hero {
-      margin-top: 72px; /* 固定ヘッダー分 */
-      min-height: calc(100vh - 72px);
-      display: flex;
+    .btn-nav--outline {
+      background: var(--white);
+      color: var(--charcoal);
+      border-color: var(--charcoal);
     }
+
+    .btn-nav:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    /* ------- メインレイアウト ------- */
+    main {
+      padding-top: 88px; /* 固定ヘッダー分 */
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ------- ヒーローエリア ------- */
+    .hero {
+      display: flex;
+      gap: 40px;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 64px 56px;
+      box-shadow: 0 18px 40px rgba(15,23,42,0.08);
+      margin-bottom: 80px;
+    }
+
     .hero-left,
     .hero-right {
       flex: 1;
     }
 
     .hero-left {
-      background: #ffffff;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 80px 60px;
     }
-  .hero-inner {
-  max-width: 750px;
-}
 
+    .hero-inner {
+      width: 100%;
+    }
 
     .hero-tagline {
       display: inline-block;
-      background: #ff3b30;
-      color: #fff;
-      font-size: 16px;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 14px;
       font-weight: 700;
-      padding: 6px 12px;
+      padding: 6px 14px;
       margin-bottom: 24px;
+      letter-spacing: 0.18em;
+      border-radius: 999px;
     }
+
     .hero-copy {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
-      line-height: 1.8;
-      margin-bottom: 32px;
+      line-height: 1.9;
+      margin-bottom: 28px;
     }
+
+    .hero-copy span {
+      font-weight: 800;
+    }
+
     .hero-sub {
       font-size: 14px;
-      color: #555;
+      color: #4B5563;
       margin-bottom: 32px;
     }
+
     .btn-cta {
       display: inline-block;
-      background: #ff3b30;
-      color: #fff;
+      background: var(--orange);
+      color: var(--white);
       padding: 14px 28px;
-      border-radius: 2px;
+      border-radius: 999px;
       font-size: 14px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
+      box-shadow: 0 14px 30px rgba(255,69,0,0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(255,69,0,0.45);
     }
 
     .hero-right {
-      background: #f5f5f5;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 40px 40px 0;
-    }
-    .hero-image-placeholder {
-      width: 100%;
-      max-width: 520px;
-      aspect-ratio: 4 / 5;
-      background: #ccc;
-      border-radius: 16px 16px 0 0;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    /* ロゴ画像：グレー余白なしで表示 */
+    .hero-logo-wrapper {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.12);
+    }
+
+    .hero-logo-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ------- 共通セクション ------- */
+    section.section {
+      margin-bottom: 72px;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .section-header h2 {
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
       font-size: 14px;
-      color: #555;
+      color: #4B5563;
     }
 
-    /* セクション用の余白（あとで中身を作る） */
-    section {
-      padding: 80px 40px;
+    .section-body {
+      font-size: 15px;
+      color: #374151;
     }
 
-    /* スマホ対応 */
-    @media (max-width: 768px) {
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px 20px 22px;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #4B5563;
+    }
+
+    /* ------- BLOG ------- */
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .blog-item {
+      padding: 14px 18px;
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 6px 18px rgba(15,23,42,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .blog-meta {
+      font-size: 12px;
+      color: #6B7280;
+      margin-bottom: 2px;
+    }
+
+    .blog-title {
+      font-weight: 600;
+    }
+
+    /* ------- CONTACT ------- */
+    .contact-inner {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 24px 24px 28px;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.08);
+      max-width: 640px;
+    }
+
+    .contact-inner p {
+      font-size: 14px;
+      color: #4B5563;
+      margin-bottom: 18px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-line {
+      background: #00C300;
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-size: 14px;
+      color: var(--white);
+      letter-spacing: 0.1em;
+    }
+
+    .btn-mail {
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-size: 14px;
+      border: 1px solid var(--charcoal);
+      background: var(--white);
+      letter-spacing: 0.1em;
+    }
+
+    /* ------- フッター ------- */
+    footer {
+      padding: 24px 0 32px;
+      text-align: center;
+      font-size: 12px;
+      color: #9CA3AF;
+    }
+
+    /* ------- スマホ対応 ------- */
+    @media (max-width: 900px) {
       header {
         padding: 0 16px;
       }
       nav ul {
-        display: none; /* 最初はSPナビは非表示にしておく（後で実装でもOK） */
+        display: none; /* SPナビは一旦非表示（必要なら後でハンバーガー実装） */
+      }
+      .nav-right {
+        margin-left: 0;
       }
       .hero {
         flex-direction: column;
+        padding: 32px 24px 40px;
       }
       .hero-left {
-        padding: 56px 20px 32px;
+        order: 2;
       }
       .hero-right {
-        padding: 0 20px 40px;
+        order: 1;
       }
     }
   </style>
 </head>
+
 <body>
   <!-- ヘッダー -->
   <header>
@@ -175,70 +382,150 @@
       <ul>
         <li><a href="#concept">CONCEPT</a></li>
         <li><a href="#service">SERVICE</a></li>
-        <li><a href="#price">PRICE</a></li>
-        <li><a href="#access">ACCESS</a></li>
+        <li><a href="#blog">BLOG</a></li>
+        <li><a href="#contact">CONTACT</a></li>
       </ul>
     </nav>
     <div class="nav-right">
-      <a href="#recruit" class="btn-nav btn-nav--outline">求人情報</a>
+      <a href="#contact" class="btn-nav btn-nav--outline">無料相談</a>
       <a href="#contact" class="btn-nav">お問い合わせ</a>
     </div>
   </header>
 
-  <!-- ヒーローエリア -->
   <main>
-    <section class="hero">
-      <div class="hero-left">
-        <div class="hero-inner">
-          <div class="hero-tagline">統合型ウェルネス＆教育事業</div>
-          <p class="hero-copy">
-            ウェルネス（Wellness）と教育（Education）を統合し、<br>
-            幼児期からシニア層までのすべてのライフステージを支える。
-          </p>
-          <p class="hero-sub">
-            株式会社 結灯（ゆうひ）は、<br>
-            ウェルネス（Wellness）と教育（Education）を通じて、<br>
-            皆様のあらゆるライフステージが明るくなるように、<br>
-            様々なサービスを提供する会社です。
+    <div class="container">
 
-          </p>
-          <a href="#contact" class="btn-cta">無料カウンセリング・体験のお申し込み</a>
+      <!-- ヒーローエリア -->
+      <section class="hero" id="top">
+        <div class="hero-left">
+          <div class="hero-inner">
+            <div class="hero-tagline">統合型ウェルネス＆教育事業</div>
+            <p class="hero-copy">
+              ウェルネス（<span>Wellness</span>）と教育（<span>Education</span>）を統合し、<br>
+              幼児期からシニア層までのすべてのライフステージを支える。
+            </p>
+            <p class="hero-sub">
+              株式会社 結灯（ゆうひ）は、<br>
+              ウェルネス（Wellness）と教育（Education）を通じて、<br>
+              皆様のあらゆるライフステージが明るくなるように、<br>
+              様々なサービスを提供する会社です。
+            </p>
+            <a href="#contact" class="btn-cta">
+              無料カウンセリング・体験のお申し込み
+            </a>
+          </div>
         </div>
-      </div>
-    <div class="hero-right">
-  <div class="hero-image-placeholder">
-    <img src="images/rogo.jpg" alt="メインビジュアル"
-         style="width: 100%; height: 100%; object-fit: cover; border-radius: 16px 16px 0 0;">
-  </div>
-</div>
 
-    </section>
+        <div class="hero-right">
+          <div class="hero-logo-wrapper">
+            <!-- ロゴ画像（グレーの余白なし） -->
+            <img src="images/rogo.JPEG" alt="株式会社結灯 ロゴ">
+          </div>
+        </div>
+      </section>
 
-    <!-- ここから下はあとで中身を作っていく -->
-    <section id="concept">
-      <h2>CONCEPT</h2>
-      <p>ここにコンセプトを書いていきます。</p>
-    </section>
+      <!-- CONCEPT -->
+      <section id="concept" class="section">
+        <div class="section-header">
+          <div class="section-label">CONCEPT</div>
+          <h2>Integrated Wellness & Education</h2>
+          <p>
+            心・身体・社会・環境などを含めて“調和的に良好な状態”を維持し続けることと、<br>
+            人としての成長を支える教育を掛け合わせ、ライフステージに寄り添った支援を行います。
+          </p>
+        </div>
+        <div class="section-body">
+          <p>
+            ウェルネスを「Well-being（幸福・良好な状態）」を能動的に実現・維持するプロセスと捉え、<br>
+            Physical / Emotional / Social / Intellectual / Spiritual / Occupational / Environmental / Financial の
+            ８つの側面からアプローチしていきます。
+          </p>
+        </div>
+      </section>
 
-    <section id="service">
-      <h2>SERVICE</h2>
-      <p>発育発達サポート、パーソナルトレーニング、マタニティケアなど。</p>
-    </section>
+      <!-- SERVICE -->
+      <section id="service" class="section">
+        <div class="section-header">
+          <div class="section-label">SERVICE</div>
+          <h2>サービスラインナップ</h2>
+          <p>幼児期から大人・シニアまで、ライフステージに合わせたサポートを提供します。</p>
+        </div>
 
-    <section id="price">
-      <h2>PRICE</h2>
-      <p>料金プランをここに記載します。</p>
-    </section>
+        <div class="card-list">
+          <div class="card">
+            <h3>発育発達サポート</h3>
+            <p>
+              乳幼児〜学童期のお子さまを対象に、発育発達の視点からカラダとココロの土台づくりを行います。
+            </p>
+          </div>
+          <div class="card">
+            <h3>パーソナルトレーニング / ピラティス</h3>
+            <p>
+              マタニティ、疼痛改善、健康維持・ボディメイクなど、一人ひとりの目的に合わせたトレーニングを提供します。
+            </p>
+          </div>
+          <div class="card">
+            <h3>ママ・保護者サポート</h3>
+            <p>
+              子育てと仕事の両立を支えるためのコンディショニング、情報提供、コミュニティづくりを行います。
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <section id="access">
-      <h2>ACCESS</h2>
-      <p>所在地・アクセス情報。</p>
-    </section>
+      <!-- BLOG -->
+      <section id="blog" class="section">
+        <div class="section-header">
+          <div class="section-label">BLOG</div>
+          <h2>Yuhi Journal</h2>
+          <p>発育発達・ウェルネス・教育に関するコラムや、日々の活動レポートを発信していきます。</p>
+        </div>
 
-    <section id="contact">
-      <h2>CONTACT</h2>
-      <p>お問い合わせフォームやLINEリンクなどを置く予定。</p>
-    </section>
+        <div class="blog-list">
+          <!-- 後で実際のブログに差し替え -->
+          <article class="blog-item">
+            <div>
+              <div class="blog-meta">2025.01.01 ｜ 発育発達</div>
+              <div class="blog-title">「立つ」「歩く」を支える乳幼児期のカラダづくりとは？（仮）</div>
+            </div>
+            <span>Coming soon</span>
+          </article>
+          <article class="blog-item">
+            <div>
+              <div class="blog-meta">2025.01.01 ｜ ウェルネス</div>
+              <div class="blog-title">ママ・パパが健康でいることが、子どもの安心につながる（仮）</div>
+            </div>
+            <span>Coming soon</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <div class="section-header">
+          <div class="section-label">CONTACT</div>
+          <h2>お問い合わせ・ご相談</h2>
+          <p>サービス内容に関するご質問や、導入のご相談など、こちらからお気軽にお送りください。</p>
+        </div>
+
+        <div class="contact-inner">
+          <p>
+            ・無料カウンセリング／体験のご希望日時<br>
+            ・現在のご状況（気になっていること、叶えたいこと）<br>
+            をあわせてお送りいただけますとスムーズです。
+          </p>
+          <div class="contact-actions">
+            <a href="#" class="btn-line">LINEで相談する（準備中）</a>
+            <a href="mailto:info@example.com" class="btn-mail">メールで問い合わせる</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      © 2025 株式会社 結灯 / Yuhi Inc. All rights reserved.
+    </footer>
   </main>
 </body>
 </html>
