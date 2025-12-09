@@ -53,8 +53,10 @@
       color: var(--charcoal);
     }
     .logo span {
-      color: var(--orange);
-    }
+  color: var(--charcoal);
+}
+
+
 
     nav ul {
       display: flex;
@@ -135,10 +137,13 @@
       margin-bottom: 80px;
     }
 
-    .hero-left,
-    .hero-right {
-      flex: 1;
-    }
+   .hero-left {
+  flex: 3;   /* 数字が大きいほど幅が広くなる */
+}
+
+.hero-right {
+  flex: 2;   /* 右側は少し細くする */
+}
 
     .hero-left {
       display: flex;
