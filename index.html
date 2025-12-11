@@ -213,7 +213,7 @@
       margin-bottom: 72px;
     }
 
-    .section-header {
+        .section-header {
       margin-bottom: 24px;
     }
 
@@ -226,16 +226,25 @@
       margin-bottom: 8px;
     }
 
+    /* ここを差し替え＆追加 */
     .section-header h2 {
       font-size: 22px;
       letter-spacing: 0.12em;
-      margin-bottom: 12px;
+      margin-bottom: 4px;   /* 下の h3 との空きを詰める */
+    }
+
+    .section-header h3 {
+      font-size: 18px;      /* お好みで微調整可 */
+      font-weight: 700;
+      margin-top: 0;        /* 上の余白を消す */
+      margin-bottom: 12px;  /* 下の本文との距離 */
     }
 
     .section-header p {
-      font-size: 16px;          /* 14px → 16px */
+      font-size: 16px;
       color: #4B5563;
     }
+
 
     .section-body {
       font-size: 16px;          /* 15px → 16px */
