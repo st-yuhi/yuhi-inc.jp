@@ -136,26 +136,27 @@
     }
 
     .hero-left {
-      flex: 5;   /* 数字が大きいほど幅が広くなる */
+      flex: 5;
+      display: flex;
+      align-items: center;
     }
 
     .hero-right {
-      flex: 3;   /* 右側は少し細くする */
-    }
-
-    .hero-left {
+      flex: 3;
       display: flex;
       align-items: center;
+      justify-content: center;
     }
 
     .hero-inner {
       width: 100%;
     }
 
+    /* ページ唯一の h1 */
     .hero-copy {
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.9;
+      font-size: 30px;      /* H1：一番大きく */
+      font-weight: 800;
+      line-height: 1.8;
       margin-bottom: 28px;
     }
 
@@ -164,7 +165,7 @@
     }
 
     .hero-sub {
-      font-size: 16px;          /* 14px → 16px に調整 */
+      font-size: 17px;      /* 本文より少しだけ強め */
       color: #4B5563;
       margin-bottom: 32px;
     }
@@ -184,12 +185,6 @@
     .btn-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 18px 40px rgba(255,69,0,0.45);
-    }
-
-    .hero-right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     /* ロゴ画像：グレー余白なしで表示 */
@@ -213,41 +208,41 @@
       margin-bottom: 72px;
     }
 
-        .section-header {
+    .section-header {
       margin-bottom: 24px;
     }
 
     .section-label {
       display: inline-block;
-      font-size: 12px;
+      font-size: 13px;          /* SERVICE 等の緑文字を少し大きく */
       letter-spacing: 0.18em;
       font-weight: 700;
       color: var(--green);
       margin-bottom: 8px;
     }
 
-    /* ここを差し替え＆追加 */
-    .section-header h1 {
-      font-size: 22px;
-      letter-spacing: 0.12em;
-      margin-bottom: 2px;   /* 下の h3 との空きを詰める */
+    /* セクションの H2（CONCEPT / SERVICE / BLOG / CONTACT の見出し） */
+    .section-header h2 {
+      font-size: 26px;          /* H2：H1より一段下 */
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
     }
 
-    .section-header h2 {
-      font-size: 18px;      /* お好みで微調整可 */
+    /* CONCEPT の日本語サブタイトル用 H3 */
+    .section-header h3 {
+      font-size: 19px;          /* H3：H2より一段下 */
       font-weight: 700;
-      margin-top: 0;        /* 上の余白を消す */
-      margin-bottom: 12px;  /* 下の本文との距離 */
+      margin-top: 0;
+      margin-bottom: 12px;      /* この下に本文がくる余白 */
     }
 
     .section-header p {
-      font-size: 16px;
+      font-size: 17px;          /* 本文：読みやすい大きさにアップ */
       color: #4B5563;
     }
 
-
     .section-body {
-      font-size: 16px;          /* 15px → 16px */
+      font-size: 17px;
       color: #374151;
     }
 
@@ -265,12 +260,12 @@
     }
 
     .card h3 {
-      font-size: 16px;
+      font-size: 18px;
       margin-bottom: 8px;
     }
 
     .card p {
-      font-size: 16px;          /* 14px → 16px */
+      font-size: 17px;
       color: #4B5563;
     }
 
@@ -289,7 +284,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 16px;          /* 14px → 16px */
+      font-size: 17px;
     }
 
     .blog-meta {
@@ -312,7 +307,7 @@
     }
 
     .contact-inner p {
-      font-size: 16px;          /* 14px → 16px */
+      font-size: 17px;
       color: #4B5563;
       margin-bottom: 18px;
     }
@@ -399,10 +394,10 @@
       <section class="hero" id="top">
         <div class="hero-left">
           <div class="hero-inner">
-            <p class="hero-copy">
+            <h1 class="hero-copy">
               ウェルネス（<span>Wellness</span>）と教育（<span>Education</span>）を統合し、<br>
               幼児期からシニア層までのすべてのライフステージを支える。
-            </p>
+            </h1>
             <p class="hero-sub">
               株式会社 結灯（ゆうひ）は、<br>
               ウェルネスと教育を通じて、皆様のあらゆるライフステージが明るくなるように、<br>
@@ -423,8 +418,8 @@
       <section id="concept" class="section">
         <div class="section-header">
           <div class="section-label">CONCEPT</div>
-          <h1>Integrated Wellness & Education</h1>
-          <h2>＜統合型ウェルネス＆教育事業＞</h2>
+          <h2>Integrated Wellness & Education</h2>
+          <h3>＜統合型ウェルネス＆教育事業＞</h3>
           <p>
             心・身体・社会・環境などを含めて“調和的に良好な状態”を維持し続けることと、<br>
             人としての成長を支える教育を掛け合わせ、ライフステージに寄り添った支援を行います。
@@ -480,7 +475,7 @@
       <section id="blog" class="section">
         <div class="section-header">
           <div class="section-label">BLOG</div>
-          <h2>Yuhi Journal</h2>
+          <h2>ブログ</h2>  <!-- Yuhi Journal → ブログ -->
           <p>発育発達・ウェルネス・教育に関するコラムや、日々の活動レポートを発信していきます。</p>
         </div>
 
