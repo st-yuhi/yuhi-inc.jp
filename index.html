@@ -210,16 +210,18 @@
     }
 
     .section-header {
-      margin-bottom: 24px;
-    }
+  max-width: 780px;        /* 見出しブロックの幅を少し絞る */
+  margin: 0 auto 32px;     /* 左右オートで中央寄せ＋下の余白 */
+  text-align: center;      /* ラベル・タイトル・サブタイトルを中央揃え */
+}
 
-    .section-label {
+.section-label {
   display: inline-block;
-  font-size: 15px;          /* 13px → 14px：少しだけ大きく */
+  font-size: 14px;         /* 少し大きめ */
   letter-spacing: 0.18em;
   font-weight: 700;
   color: var(--green);
-  margin-bottom: 3px;       /* 8px → 4px：下とのスキマを半分に */
+  margin-bottom: 3px;      /* 下とのスキマを少し詰める */
 }
 
 
