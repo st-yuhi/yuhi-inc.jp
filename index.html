@@ -316,14 +316,16 @@
     }
 
     /* ------- CONCEPT（2カード） ------- */
-    .concept-grid {
+ .concept-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 420px)); /* ←各カードの上限幅を設定 */
+  grid-template-columns: 1fr 1fr;   /* 2枚で親幅いっぱいに広げる */
   gap: 24px;
-  justify-content: center;     /* ←2枚を中央に寄せる */
-  margin: 22px auto 0;
+  width: 100%;
+  max-width: none;                  /* ←これが重要（狭くなる原因を撤去） */
+  margin: 22px 0 0;                 /* 中央寄せ不要。heroと同じく親幅基準 */
   text-align: left;
 }
+
 
 
     .concept-card {
