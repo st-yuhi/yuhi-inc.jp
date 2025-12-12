@@ -317,13 +317,14 @@
 
     /* ------- CONCEPT（2カード） ------- */
     .concept-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin: 22px auto 0;   /* ★変更：中央寄せ */
-      max-width: 1100px;     /* ★変更：横幅を締める */
-      text-align: left;
-    }
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 420px)); /* ←各カードの上限幅を設定 */
+  gap: 24px;
+  justify-content: center;     /* ←2枚を中央に寄せる */
+  margin: 22px auto 0;
+  text-align: left;
+}
+
 
     .concept-card {
       background: var(--white);
