@@ -302,25 +302,64 @@
     }
 
     /* ------- CONTACT ------- */
-    .contact-inner {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 24px 24px 28px;
-      box-shadow: 0 10px 26px rgba(15,23,42,0.08);
-      max-width: 640px;
-    }
+.contact-layout {
+  display: flex;
+  gap: 24px;              /* 2つの白いマスの間隔 */
+  align-items: stretch;
+}
 
-    .contact-inner p {
-      font-size: 17px;
-      color: #4B5563;
-      margin-bottom: 18px;
-    }
+.contact-inner {
+  flex: 1;                /* 左右をほぼ同じ幅に */
+  background: var(--white);
+  border-radius: 18px;
+  padding: 24px 24px 28px;
+  box-shadow: 0 10px 26px rgba(15,23,42,0.08);
+}
 
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+.contact-inner p {
+  font-size: 17px;
+  color: #4B5563;
+  margin-bottom: 18px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 右カード内の「事業リンク」用 */
+.contact-services-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.contact-services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-service-link {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #D1D5DB;
+  font-size: 14px;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-service-link:hover {
+  background: var(--charcoal);
+  color: var(--white);
+  border-color: var(--charcoal);
+}
+
 
     .btn-line {
       background: #00C300;
@@ -350,26 +389,31 @@
 
     /* ------- スマホ対応 ------- */
     @media (max-width: 900px) {
-      header {
-        padding: 0 16px;
-      }
-      nav ul {
-        display: none; /* SPナビは一旦非表示（必要なら後でハンバーガー実装） */
-      }
-      .nav-right {
-        margin-left: 0;
-      }
-      .hero {
-        flex-direction: column;
-        padding: 32px 24px 40px;
-      }
-      .hero-left {
-        order: 2;
-      }
-      .hero-right {
-        order: 1;
-      }
-    }
+  header {
+    padding: 0 16px;
+  }
+  nav ul {
+    display: none;
+  }
+  .nav-right {
+    margin-left: 0;
+  }
+  .hero {
+    flex-direction: column;
+    padding: 32px 24px 40px;
+  }
+  .hero-left {
+    order: 2;
+  }
+  .hero-right {
+    order: 1;
+  }
+
+  /* 追加：スマホでは縦並び */
+  .contact-layout {
+    flex-direction: column;
+  }
+}
   </style>
 </head>
 
@@ -502,7 +546,7 @@
         </div>
       </section>
 
-      <!-- CONTACT -->
+            <!-- CONTACT -->
       <section id="contact" class="section">
         <div class="section-header">
           <div class="section-label">CONTACT</div>
@@ -510,17 +554,39 @@
           <p>サービス内容に関するご質問や、導入のご相談など、こちらからお気軽にお送りください。</p>
         </div>
 
-        <div class="contact-inner">
-          <p>
-            ・会社へのお問い合わせは、こちらから<br>
-            ・その他、各事業へのお問い合わせは右の各事業ページから
-          </p>
-          <div class="contact-actions">
-            <a href="https://lin.ee/2fOTjRr" class="btn-line">LINEで相談する</a>
-            <a href="mailto:info@yuhi-inc.jp" class="btn-mail">メールで問い合わせる</a>
+        <div class="contact-layout">
+          <!-- 左：会社へのお問い合わせ -->
+          <div class="contact-inner">
+            <p>
+              ・会社全体に関するお問い合わせは、こちらから<br>
+              ・各サービスに関するお問い合わせは、各事業ページ内のお問い合わせ窓口へ
+            </p>
+            <div class="contact-actions">
+              <a href="https://lin.ee/2fOTjRr" class="btn-line">LINEで相談する</a>
+              <a href="mailto:info@yuhi-inc.jp" class="btn-mail">メールで問い合わせる</a>
+            </div>
+          </div>
+
+          <!-- 右：各事業へのリンク -->
+          <div class="contact-inner">
+            <p class="contact-services-title">各事業へのお問い合わせはこちら</p>
+            <ul class="contact-services-list">
+              <li>
+                <a href="#service" class="contact-service-link">
+                  パーソナルトレーニング事業
+                </a>
+              </li>
+              <li>
+                <a href="#service" class="contact-service-link">
+                  保育事業
+                </a>
+              </li>
+              <!-- 事業が増えたらここに li を足すだけでOK -->
+            </ul>
           </div>
         </div>
       </section>
+
 
     </div>
 
