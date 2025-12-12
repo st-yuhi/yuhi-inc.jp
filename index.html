@@ -210,20 +210,19 @@
     }
 
     .section-header {
-  max-width: 780px;        /* 見出しブロックの幅を少し絞る */
-  margin: 0 auto 32px;     /* 左右オートで中央寄せ＋下の余白 */
-  text-align: center;      /* ラベル・タイトル・サブタイトルを中央揃え */
-}
+      max-width: 780px;        /* 見出しブロックの幅を少し絞る */
+      margin: 0 auto 32px;     /* 左右オートで中央寄せ＋下の余白 */
+      text-align: center;      /* ラベル・タイトル・サブタイトルを中央揃え */
+    }
 
-.section-label {
-  display: inline-block;
-  font-size: 14px;         /* 少し大きめ */
-  letter-spacing: 0.18em;
-  font-weight: 700;
-  color: var(--green);
-  margin-bottom: 3px;      /* 下とのスキマを少し詰める */
-}
-
+    .section-label {
+      display: inline-block;
+      font-size: 14px;         /* 少し大きめ */
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 3px;      /* 下とのスキマを少し詰める */
+    }
 
     /* セクションの H2（CONCEPT / SERVICE / BLOG / CONTACT の見出し） */
     .section-header h2 {
@@ -302,72 +301,136 @@
     }
 
     /* セクション全体を白カードにしたいとき用 */
-.section-panel {
-  background: var(--white);
-  border-radius: 18px;
-  padding: 32px 40px 36px;
-  box-shadow: 0 12px 28px rgba(15,23,42,0.08);
-}
+    .section-panel {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 32px 40px 36px;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+    }
+
+    /* ------- CONCEPT（2カード） ------- */
+    /* 1枚の白パネル内に、2枚の白カードを並べる */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 22px;
+      text-align: left;
+    }
+
+    .concept-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 22px 22px 24px;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+    }
+
+    .concept-card h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .concept-card p {
+      font-size: 17px;
+      color: #4B5563;
+      margin-bottom: 14px;
+    }
+
+    .concept-divider {
+      height: 1px;
+      background: #E5E7EB;
+      margin: 12px 0 16px;
+    }
+
+    .aspect-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* PCは2列 */
+      gap: 10px 14px;
+    }
+
+    .aspect-list li {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      font-size: 14px;
+      color: #374151;
+      text-align: center;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .edu-list {
+      margin-left: 18px;
+      color: #374151;
+    }
+
+    .edu-list li {
+      font-size: 17px;
+      color: #4B5563;
+      margin: 10px 0;
+    }
 
     /* ------- CONTACT ------- */
-.contact-layout {
-  display: flex;
-  gap: 24px;              /* 2つの白いマスの間隔 */
-  align-items: stretch;
-}
+    .contact-layout {
+      display: flex;
+      gap: 24px;              /* 2つの白いマスの間隔 */
+      align-items: stretch;
+    }
 
-.contact-inner {
-  flex: 1;                /* 左右をほぼ同じ幅に */
-  background: var(--white);
-  border-radius: 18px;
-  padding: 24px 24px 28px;
-  box-shadow: 0 10px 26px rgba(15,23,42,0.08);
-}
+    .contact-inner {
+      flex: 1;                /* 左右をほぼ同じ幅に */
+      background: var(--white);
+      border-radius: 18px;
+      padding: 24px 24px 28px;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.08);
+    }
 
-.contact-inner p {
-  font-size: 17px;
-  color: #4B5563;
-  margin-bottom: 18px;
-}
+    .contact-inner p {
+      font-size: 17px;
+      color: #4B5563;
+      margin-bottom: 18px;
+    }
 
-.contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
 
-/* 右カード内の「事業リンク」用 */
-.contact-services-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
+    /* 右カード内の「事業リンク」用 */
+    .contact-services-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
 
-.contact-services-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+    .contact-services-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-.contact-service-link {
-  display: block;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid #D1D5DB;
-  font-size: 14px;
-  text-align: center;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
+    .contact-service-link {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid #D1D5DB;
+      font-size: 14px;
+      text-align: center;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
 
-.contact-service-link:hover {
-  background: var(--charcoal);
-  color: var(--white);
-  border-color: var(--charcoal);
-}
-
+    .contact-service-link:hover {
+      background: var(--charcoal);
+      color: var(--white);
+      border-color: var(--charcoal);
+    }
 
     .btn-line {
       background: #00C300;
@@ -397,31 +460,42 @@
 
     /* ------- スマホ対応 ------- */
     @media (max-width: 900px) {
-  header {
-    padding: 0 16px;
-  }
-  nav ul {
-    display: none;
-  }
-  .nav-right {
-    margin-left: 0;
-  }
-  .hero {
-    flex-direction: column;
-    padding: 32px 24px 40px;
-  }
-  .hero-left {
-    order: 2;
-  }
-  .hero-right {
-    order: 1;
-  }
+      header {
+        padding: 0 16px;
+      }
+      nav ul {
+        display: none;
+      }
+      .nav-right {
+        margin-left: 0;
+      }
+      .hero {
+        flex-direction: column;
+        padding: 32px 24px 40px;
+      }
+      .hero-left {
+        order: 2;
+      }
+      .hero-right {
+        order: 1;
+      }
 
-  /* 追加：スマホでは縦並び */
-  .contact-layout {
-    flex-direction: column;
-  }
-}
+      /* 追加：スマホでは縦並び */
+      .contact-layout {
+        flex-direction: column;
+      }
+
+      /* CONCEPT：スマホでは縦積み＋8項目は1列 */
+      .concept-grid {
+        grid-template-columns: 1fr;
+      }
+      .aspect-list {
+        grid-template-columns: 1fr;
+      }
+      .aspect-list li {
+        white-space: normal;
+      }
+    }
   </style>
 </head>
 
@@ -470,7 +544,7 @@
         </div>
       </section>
 
-            <!-- CONCEPT -->
+      <!-- CONCEPT -->
       <section id="concept" class="section">
         <div class="section-panel">
           <div class="section-header">
@@ -483,20 +557,43 @@
             </p>
           </div>
 
-          <div class="section-body">
-            <p>
-              ウェルネスを「Well-being（幸福・良好な状態）」を能動的に実現・維持するプロセスと捉え、<br>
-              Physical（身体的）<br>
-              Emotional（感情的）<br>
-              Social（社会的）<br>
-              Intellectual（知的）<br>
-              Spiritual（精神的）<br>
-              Occupational（仕事・生きがい）<br>
-              Environmental（環境的）<br>
-              Financial（経済的）<br>
-              上記８つの側面からアプローチしていきます。
-            </p>
+          <!-- ここから：白カード2枚（左：Wellness／右：Education） -->
+          <div class="concept-grid">
+            <!-- Left: Wellness -->
+            <div class="concept-card">
+              <h4>Wellness</h4>
+              <p>
+                ウェルネスを「Well-being（幸福・良好な状態）」を能動的に実現・維持するプロセスと捉え、<br>
+                下記８つの側面からアプローチしていきます。
+              </p>
+              <div class="concept-divider"></div>
+              <ul class="aspect-list">
+                <li>Physical（身体的）</li>
+                <li>Emotional（感情的）</li>
+                <li>Social（社会的）</li>
+                <li>Intellectual（知的）</li>
+                <li>Spiritual（精神的）</li>
+                <li>Occupational（仕事・生きがい）</li>
+                <li>Environmental（環境的）</li>
+                <li>Financial（経済的）</li>
+              </ul>
+            </div>
+
+            <!-- Right: Education -->
+            <div class="concept-card">
+              <h4>Education</h4>
+              <p>
+                教育を、知識の習得にとどめず、考え方や人格の成長まで含むものとして捉えます。
+              </p>
+              <div class="concept-divider"></div>
+              <ul class="edu-list">
+                <li>知識を教える（知識・情報）</li>
+                <li>考え方を育てる（判断力・価値観）</li>
+                <li>人として成長させる（人格・ライフスキル）</li>
+              </ul>
+            </div>
           </div>
+          <!-- ここまで：白カード2枚 -->
         </div>
       </section>
 
@@ -534,12 +631,11 @@
       <section id="blog" class="section">
         <div class="section-header">
           <div class="section-label">BLOG</div>
-          <h2>ブログ</h2>  <!-- Yuhi Journal → ブログ -->
+          <h2>ブログ</h2>
           <p>発育発達・ウェルネス・教育に関するコラムを発信していきます。</p>
         </div>
 
         <div class="blog-list">
-          <!-- 後で実際のブログに差し替え -->
           <article class="blog-item">
             <div>
               <div class="blog-meta">2025.01.01 ｜ 発育発達</div>
@@ -557,7 +653,7 @@
         </div>
       </section>
 
-            <!-- CONTACT -->
+      <!-- CONTACT -->
       <section id="contact" class="section">
         <div class="section-header">
           <div class="section-label">CONTACT</div>
@@ -598,7 +694,6 @@
         </div>
       </section>
 
-
     </div>
 
     <footer>
@@ -607,3 +702,4 @@
   </main>
 </body>
 </html>
+
