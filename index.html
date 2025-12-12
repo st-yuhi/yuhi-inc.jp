@@ -300,7 +300,7 @@
       font-weight: 600;
     }
 
-    /* セクション全体を白カードにしたいとき用 */
+    /* セクション全体を白カードにしたいとき用（必要なら他セクションにも使える） */
     .section-panel {
       background: var(--white);
       border-radius: 18px;
@@ -308,13 +308,20 @@
       box-shadow: 0 12px 28px rgba(15,23,42,0.08);
     }
 
+    /* ★追加：CONCEPTは外側の白パネルを使わず、透明にする */
+    .section-panel--transparent{
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+    }
+
     /* ------- CONCEPT（2カード） ------- */
-    /* 1枚の白パネル内に、2枚の白カードを並べる */
     .concept-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
-      margin-top: 22px;
+      margin: 22px auto 0;   /* ★変更：中央寄せ */
+      max-width: 1100px;     /* ★変更：横幅を締める */
       text-align: left;
     }
 
@@ -546,7 +553,8 @@
 
       <!-- CONCEPT -->
       <section id="concept" class="section">
-        <div class="section-panel">
+        <!-- ★変更：外側の白パネルは透明化 -->
+        <div class="section-panel section-panel--transparent">
           <div class="section-header">
             <div class="section-label">CONCEPT</div>
             <h2>Integrated Wellness & Education</h2>
@@ -557,7 +565,7 @@
             </p>
           </div>
 
-          <!-- ここから：白カード2枚（左：Wellness／右：Education） -->
+          <!-- 白カード2枚（左：Wellness／右：Education） -->
           <div class="concept-grid">
             <!-- Left: Wellness -->
             <div class="concept-card">
@@ -593,7 +601,6 @@
               </ul>
             </div>
           </div>
-          <!-- ここまで：白カード2枚 -->
         </div>
       </section>
 
@@ -702,4 +709,5 @@
   </main>
 </body>
 </html>
+
 
