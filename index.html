@@ -7,12 +7,51 @@
   <link rel="icon" type="image/png" href="/favicon.png">
 
   <style>
+    /* =========================================================
+       0) 全体カラー / 全体タイポ（デフォルト値）
+       ・基本はここが“基準”
+       ・各ブロックで変えたい場合は、下の「6) ブロック別」だけ触る
+       ========================================================= */
     :root {
+      /* --- colors --- */
       --charcoal: #1A202C;
       --orange:  #FF4500;
       --green:   #3CB371;
       --white:   #FFFFFF;
       --bg-light:#F5F7FA;
+
+      /* --- header / nav --- */
+      --fs-logo: 24px;     /* ヘッダーロゴ文字 */
+      --fs-nav:  14px;     /* ナビ */
+      --fs-btn-nav: 16px;  /* ヘッダーボタン */
+
+      /* --- hero（トップ） --- */
+      --fs-hero-h1: 29px;  /* ページ唯一のh1 */
+      --fs-hero-sub: 20px; /* ヒーロー説明文 */
+
+      /* --- section header（各セクション見出し） --- */
+      --fs-section-label: 16px; /* CONCEPT/SERVICE等のラベル */
+      --fs-section-h2:    27px; /* H2 */
+      --fs-section-h3:    21px; /* H3（CONCEPTの日本語サブ） */
+      --fs-section-desc:  18px; /* 見出し直下の説明文（p） */
+
+      /* --- section body / cards / lists --- */
+      --fs-section-body:       17px; /* 本文（必要なら使う） */
+      --fs-section-card-title: 18px; /* SERVICEカードなどの見出し */
+      --fs-section-card-text:  17px; /* SERVICEカードなどの本文 */
+
+      /* --- concept cards --- */
+      --fs-concept-title: 18px; /* Wellness/Educationカード見出し（h4） */
+      --fs-concept-text:  17px; /* Wellness/Educationカード本文（p） */
+      --fs-aspect-pill:   14px; /* 8項目のピル */
+      --fs-edu-text:      17px; /* Educationの箇条書き */
+
+      /* --- blog --- */
+      --fs-blog-item: 17px; /* blog-item全体 */
+      --fs-blog-meta: 12px; /* blog-meta */
+
+      /* --- contact --- */
+      --fs-contact-text: 17px; /* CONTACT左/右カード内の説明文 */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,17 +64,14 @@
       line-height: 1.7;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
 
-    /* ------- ヘッダー ------- */
+    /* =========================================================
+       1) ヘッダー（固定ナビ）
+       ========================================================= */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 72px;
       display: flex;
       align-items: center;
@@ -49,41 +85,30 @@
 
     .logo {
       font-weight: 700;
-      font-size: 24px;
+      font-size: var(--fs-logo);
       letter-spacing: 0.16em;
       color: var(--charcoal);
     }
-    .logo span {
-      color: var(--charcoal);
-    }
+    .logo span { color: var(--charcoal); }
 
     nav ul {
       display: flex;
       gap: 28px;
       list-style: none;
-      font-size: 14px;
+      font-size: var(--fs-nav);
       letter-spacing: 0.14em;
     }
 
-    nav a {
-      position: relative;
-      padding-bottom: 4px;
-    }
-
+    nav a { position: relative; padding-bottom: 4px; }
     nav a::after {
       content: "";
       position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
+      left: 0; bottom: 0;
+      width: 0; height: 2px;
       background: var(--orange);
       transition: width 0.25s ease;
     }
-
-    nav a:hover::after {
-      width: 100%;
-    }
+    nav a:hover::after { width: 100%; }
 
     .nav-right {
       display: flex;
@@ -92,7 +117,7 @@
     }
 
     .btn-nav {
-      font-size: 16px;
+      font-size: var(--fs-btn-nav);
       padding: 8px 16px;
       border-radius: 999px;
       border: 1px solid var(--charcoal);
@@ -114,10 +139,10 @@
       box-shadow: 0 8px 18px rgba(0,0,0,0.12);
     }
 
-    /* ------- メインレイアウト ------- */
-    main {
-      padding-top: 88px; /* 固定ヘッダー分 */
-    }
+    /* =========================================================
+       2) メインレイアウト
+       ========================================================= */
+    main { padding-top: 88px; } /* 固定ヘッダー分 */
 
     .container {
       max-width: 1400px;
@@ -125,7 +150,12 @@
       padding: 0 24px 80px;
     }
 
-    /* ------- ヒーローエリア ------- */
+    /* 固定ヘッダーでアンカー移動したとき、見出しが隠れないように */
+    section { scroll-margin-top: 96px; }
+
+    /* =========================================================
+       3) ヒーローエリア（トップ）
+       ========================================================= */
     .hero {
       display: flex;
       gap: 40px;
@@ -134,6 +164,10 @@
       padding: 64px 56px;
       box-shadow: 0 18px 40px rgba(15,23,42,0.08);
       margin-bottom: 80px;
+
+      /* --- HEROブロック内のタイポ（必要ならここを局所上書き可能） --- */
+      --fs-h1:  var(--fs-hero-h1);
+      --fs-sub: var(--fs-hero-sub);
     }
 
     .hero-left {
@@ -149,28 +183,25 @@
       justify-content: center;
     }
 
-    .hero-inner {
-      width: 100%;
-    }
+    .hero-inner { width: 100%; }
 
     /* ページ唯一の h1 */
     .hero-copy {
-      font-size: 29px;      /* H1：一番大きく */
+      font-size: var(--fs-h1);
       font-weight: 800;
       line-height: 1.9;
       margin-bottom: 28px;
     }
 
-    .hero-copy span {
-      font-weight: 800;
-    }
+    .hero-copy span { font-weight: 800; }
 
     .hero-sub {
-      font-size: 20px;      /* 本文より少しだけ強め */
+      font-size: var(--fs-sub);
       color: #4B5563;
       margin-bottom: 32px;
     }
 
+    /* 予備：CTAボタン（使う場合はHTML側に置く） */
     .btn-cta {
       display: inline-block;
       background: var(--orange);
@@ -182,13 +213,11 @@
       box-shadow: 0 14px 30px rgba(255,69,0,0.3);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .btn-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 18px 40px rgba(255,69,0,0.45);
     }
 
-    /* ロゴ画像：グレー余白なしで表示 */
     .hero-logo-wrapper {
       width: 100%;
       max-width: 420px;
@@ -197,58 +226,80 @@
       background: var(--white);
       box-shadow: 0 16px 40px rgba(15,23,42,0.12);
     }
-
     .hero-logo-wrapper img {
       display: block;
       width: 100%;
       height: auto;
     }
 
-    /* ------- 共通セクション ------- */
+    /* =========================================================
+       4) セクション共通（CONCEPT/SERVICE/BLOG/CONTACT）
+       ・各セクションで文字サイズを変えたい場合は
+         HTMLの section に section--xxx を付与して、下の「6) ブロック別」で上書き
+       ========================================================= */
     section.section {
       margin-bottom: 72px;
+
+      /* --- このセクション内で使うタイポ“変数”（デフォルト値） --- */
+      --fs-label: var(--fs-section-label); /* ラベル */
+      --fs-h2:    var(--fs-section-h2);    /* H2 */
+      --fs-h3:    var(--fs-section-h3);    /* H3 */
+      --fs-desc:  var(--fs-section-desc);  /* 見出し直下p */
+
+      --fs-body:       var(--fs-section-body);       /* 本文 */
+      --fs-card-title: var(--fs-section-card-title); /* カード見出し */
+      --fs-card-text:  var(--fs-section-card-text);  /* カード本文 */
+
+      --fs-concept-title: var(--fs-concept-title); /* CONCEPTカード見出し */
+      --fs-concept-text:  var(--fs-concept-text);  /* CONCEPTカード本文 */
+      --fs-aspect-pill:   var(--fs-aspect-pill);   /* 8項目ピル */
+      --fs-edu-text:      var(--fs-edu-text);      /* Education箇条書き */
+
+      --fs-blog-item: var(--fs-blog-item); /* BLOG1行カード */
+      --fs-blog-meta: var(--fs-blog-meta); /* BLOGメタ */
+
+      --fs-contact-text: var(--fs-contact-text); /* CONTACT本文 */
     }
 
     .section-header {
-      max-width: 780px;        /* 見出しブロックの幅を少し絞る */
-      margin: 0 auto 32px;     /* 左右オートで中央寄せ＋下の余白 */
-      text-align: center;      /* ラベル・タイトル・サブタイトルを中央揃え */
+      max-width: 780px;
+      margin: 0 auto 32px;
+      text-align: center;
     }
 
     .section-label {
       display: inline-block;
-      font-size: 16px;         /* 少し大きめ */
+      font-size: var(--fs-label);
       letter-spacing: 0.18em;
       font-weight: 700;
       color: var(--green);
-      margin-bottom: 3px;      /* 下とのスキマを少し詰める */
+      margin-bottom: 3px;
     }
 
-    /* セクションの H2（CONCEPT / SERVICE / BLOG / CONTACT の見出し） */
     .section-header h2 {
-      font-size: 27px;          /* H2：H1より一段下 */
+      font-size: var(--fs-h2);
       letter-spacing: 0.08em;
       margin-bottom: 4px;
     }
 
-    /* CONCEPT の日本語サブタイトル用 H3 */
     .section-header h3 {
-      font-size: 21px;          /* H3：H2より一段下 */
+      font-size: var(--fs-h3);
       font-weight: 700;
       margin-top: 0;
-      margin-bottom: 12px;      /* この下に本文がくる余白 */
+      margin-bottom: 12px;
     }
 
     .section-header p {
-      font-size: 18px;          /* 本文：読みやすい大きさにアップ */
+      font-size: var(--fs-desc);
       color: #4B5563;
     }
 
     .section-body {
-      font-size: 17px;
+      font-size: var(--fs-body);
       color: #374151;
     }
 
+    /* 汎用カード（SERVICEなど） */
     .card-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -263,16 +314,101 @@
     }
 
     .card h3 {
-      font-size: 18px;
+      font-size: var(--fs-card-title);
       margin-bottom: 8px;
     }
 
     .card p {
-      font-size: 17px;
+      font-size: var(--fs-card-text);
       color: #4B5563;
     }
 
-    /* ------- BLOG ------- */
+    /* セクション全体を白カードにしたいとき用 */
+    .section-panel {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 32px 40px 36px;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.08);
+    }
+
+    /* CONCEPTは外側の白パネルを使わない */
+    .section-panel--transparent{
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    /* =========================================================
+       5) 個別UI（CONCEPT / BLOG / CONTACT）
+       ========================================================= */
+
+    /* ----- CONCEPT（2カード） ----- */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      width: 100%;
+      max-width: none;
+      margin: 22px 0 0;
+      text-align: left;
+    }
+
+    .concept-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 22px 22px 24px;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+    }
+
+    .concept-card h4 {
+      font-size: var(--fs-concept-title);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .concept-card p {
+      font-size: var(--fs-concept-text);
+      color: #4B5563;
+      margin-bottom: 14px;
+    }
+
+    .concept-divider {
+      height: 1px;
+      background: #E5E7EB;
+      margin: 12px 0 16px;
+    }
+
+    .aspect-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 14px;
+    }
+
+    .aspect-list li {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      font-size: var(--fs-aspect-pill);
+      color: #374151;
+      text-align: center;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .edu-list {
+      margin-left: 18px;
+      color: #374151;
+    }
+
+    .edu-list li {
+      font-size: var(--fs-edu-text);
+      color: #4B5563;
+      margin: 10px 0;
+    }
+
+    /* ----- BLOG ----- */
     .blog-list {
       display: flex;
       flex-direction: column;
@@ -287,111 +423,26 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 17px;
+      font-size: var(--fs-blog-item);
     }
 
     .blog-meta {
-      font-size: 12px;
+      font-size: var(--fs-blog-meta);
       color: #6B7280;
       margin-bottom: 2px;
     }
 
-    .blog-title {
-      font-weight: 600;
-    }
+    .blog-title { font-weight: 600; }
 
-    /* セクション全体を白カードにしたいとき用（必要なら他セクションにも使える） */
-    .section-panel {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 32px 40px 36px;
-      box-shadow: 0 12px 28px rgba(15,23,42,0.08);
-    }
-
-    /* ★追加：CONCEPTは外側の白パネルを使わず、透明にする */
-    .section-panel--transparent{
-      background: transparent;
-      box-shadow: none;
-      padding: 0;
-    }
-
-    /* ------- CONCEPT（2カード） ------- */
- .concept-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;   /* 2枚で親幅いっぱいに広げる */
-  gap: 24px;
-  width: 100%;
-  max-width: none;                  /* ←これが重要（狭くなる原因を撤去） */
-  margin: 22px 0 0;                 /* 中央寄せ不要。heroと同じく親幅基準 */
-  text-align: left;
-}
-
-
-
-    .concept-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 22px 22px 24px;
-      box-shadow: 0 10px 24px rgba(15,23,42,0.06);
-    }
-
-    .concept-card h4 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      letter-spacing: 0.02em;
-    }
-
-    .concept-card p {
-      font-size: 17px;
-      color: #4B5563;
-      margin-bottom: 14px;
-    }
-
-    .concept-divider {
-      height: 1px;
-      background: #E5E7EB;
-      margin: 12px 0 16px;
-    }
-
-    .aspect-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr; /* PCは2列 */
-      gap: 10px 14px;
-    }
-
-    .aspect-list li {
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: #F9FAFB;
-      border: 1px solid #E5E7EB;
-      font-size: 14px;
-      color: #374151;
-      text-align: center;
-      line-height: 1.4;
-      white-space: nowrap;
-    }
-
-    .edu-list {
-      margin-left: 18px;
-      color: #374151;
-    }
-
-    .edu-list li {
-      font-size: 17px;
-      color: #4B5563;
-      margin: 10px 0;
-    }
-
-    /* ------- CONTACT ------- */
+    /* ----- CONTACT ----- */
     .contact-layout {
       display: flex;
-      gap: 24px;              /* 2つの白いマスの間隔 */
+      gap: 24px;
       align-items: stretch;
     }
 
     .contact-inner {
-      flex: 1;                /* 左右をほぼ同じ幅に */
+      flex: 1;
       background: var(--white);
       border-radius: 18px;
       padding: 24px 24px 28px;
@@ -399,7 +450,7 @@
     }
 
     .contact-inner p {
-      font-size: 17px;
+      font-size: var(--fs-contact-text);
       color: #4B5563;
       margin-bottom: 18px;
     }
@@ -410,7 +461,6 @@
       gap: 12px;
     }
 
-    /* 右カード内の「事業リンク」用 */
     .contact-services-title {
       font-size: 16px;
       font-weight: 600;
@@ -460,7 +510,75 @@
       letter-spacing: 0.1em;
     }
 
-    /* ------- フッター ------- */
+    /* =========================================================
+       6) ブロック別：文字サイズ調整（ここだけ触ればOK）
+       ・section--xxx：セクション全体（見出し/本文/カード/リスト等）に効く
+       ・section-header--xxx：見出しブロック（label/h2/h3/desc）だけに効く
+       ========================================================= */
+
+    /* ---------- CONCEPT（セクション全体） ---------- */
+    .section--concept{
+      /* 例：CONCEPT全体のカード本文を少し大きくしたいなら
+      --fs-concept-text: 18px;
+      */
+    }
+
+    /* CONCEPT（見出しブロックだけ） */
+    .section-header--concept{
+      --fs-desc: 19px; /* “特にCONCEPTだけ19” ←ここ */
+      /* 例：必要なら見出し側もここで調整可能
+      --fs-h2: 28px;
+      --fs-h3: 22px;
+      --fs-label: 16px;
+      */
+    }
+
+    /* ---------- SERVICE（セクション全体） ---------- */
+    .section--service{
+      /* 例：SERVICEカード本文だけ少し小さくしたいなら
+      --fs-card-text: 16px;
+      */
+    }
+
+    /* SERVICE（見出しブロックだけ） */
+    .section-header--service{
+      /* 例：
+      --fs-desc: 18px;
+      */
+    }
+
+    /* ---------- BLOG（セクション全体） ---------- */
+    .section--blog{
+      /* 例：ブログ一覧の文字だけ調整
+      --fs-blog-item: 16px;
+      --fs-blog-meta: 12px;
+      */
+    }
+
+    /* BLOG（見出しブロックだけ） */
+    .section-header--blog{
+      /* 例：
+      --fs-desc: 18px;
+      */
+    }
+
+    /* ---------- CONTACT（セクション全体） ---------- */
+    .section--contact{
+      /* 例：CONTACT内の本文だけ調整
+      --fs-contact-text: 16px;
+      */
+    }
+
+    /* CONTACT（見出しブロックだけ） */
+    .section-header--contact{
+      /* 例：
+      --fs-desc: 18px;
+      */
+    }
+
+    /* =========================================================
+       7) フッター
+       ========================================================= */
     footer {
       padding: 24px 0 32px;
       text-align: center;
@@ -468,51 +586,37 @@
       color: #9CA3AF;
     }
 
-    /* ------- スマホ対応 ------- */
+    /* =========================================================
+       8) スマホ対応
+       ========================================================= */
     @media (max-width: 900px) {
-      header {
-        padding: 0 16px;
-      }
-      nav ul {
-        display: none;
-      }
-      .nav-right {
-        margin-left: 0;
-      }
+      header { padding: 0 16px; }
+      nav ul { display: none; }
+      .nav-right { margin-left: 0; }
+
       .hero {
         flex-direction: column;
         padding: 32px 24px 40px;
       }
-      .hero-left {
-        order: 2;
-      }
-      .hero-right {
-        order: 1;
-      }
+      .hero-left { order: 2; }
+      .hero-right { order: 1; }
 
-      /* 追加：スマホでは縦並び */
-      .contact-layout {
-        flex-direction: column;
-      }
+      .contact-layout { flex-direction: column; }
 
-      /* CONCEPT：スマホでは縦積み＋8項目は1列 */
-      .concept-grid {
-        grid-template-columns: 1fr;
-      }
-      .aspect-list {
-        grid-template-columns: 1fr;
-      }
-      .aspect-list li {
-        white-space: normal;
-      }
+      .concept-grid { grid-template-columns: 1fr; }
+      .aspect-list { grid-template-columns: 1fr; }
+      .aspect-list li { white-space: normal; }
     }
   </style>
 </head>
 
 <body>
-  <!-- ヘッダー -->
+  <!-- =========================
+       ヘッダー（固定）
+       ========================= -->
   <header>
     <a href="#top" class="logo">Yuhi<span>.</span>INC</a>
+
     <nav>
       <ul>
         <li><a href="#concept">CONCEPT</a></li>
@@ -521,6 +625,7 @@
         <li><a href="#contact">CONTACT</a></li>
       </ul>
     </nav>
+
     <div class="nav-right">
       <a href="#contact" class="btn-nav">お問い合わせ</a>
     </div>
@@ -529,8 +634,10 @@
   <main>
     <div class="container">
 
-      <!-- ヒーローエリア -->
-      <section class="hero" id="top">
+      <!-- =========================
+           ヒーロー（TOPブロック）
+           ========================= -->
+      <section class="hero hero--home" id="top">
         <div class="hero-left">
           <div class="hero-inner">
             <h1 class="hero-copy">
@@ -553,11 +660,14 @@
         </div>
       </section>
 
-      <!-- CONCEPT -->
-      <section id="concept" class="section">
-        <!-- ★変更：外側の白パネルは透明化 -->
+      <!-- =========================
+           CONCEPT（CONCEPTブロック）
+           ・section--concept：セクション全体のタイポ調整用
+           ・section-header--concept：見出しだけのタイポ調整用
+           ========================= -->
+      <section id="concept" class="section section--concept">
         <div class="section-panel section-panel--transparent">
-          <div class="section-header">
+          <div class="section-header section-header--concept">
             <div class="section-label">CONCEPT</div>
             <h2>Integrated Wellness & Education</h2>
             <h3>＜統合型ウェルネス＆教育事業＞</h3>
@@ -567,9 +677,7 @@
             </p>
           </div>
 
-          <!-- 白カード2枚（左：Wellness／右：Education） -->
           <div class="concept-grid">
-            <!-- Left: Wellness -->
             <div class="concept-card">
               <h4>Wellness</h4>
               <p>
@@ -589,7 +697,6 @@
               </ul>
             </div>
 
-            <!-- Right: Education -->
             <div class="concept-card">
               <h4>Education</h4>
               <p>
@@ -606,9 +713,11 @@
         </div>
       </section>
 
-      <!-- SERVICE -->
-      <section id="service" class="section">
-        <div class="section-header">
+      <!-- =========================
+           SERVICE（SERVICEブロック）
+           ========================= -->
+      <section id="service" class="section section--service">
+        <div class="section-header section-header--service">
           <div class="section-label">SERVICE</div>
           <h2>ラインナップ</h2>
           <p>幼児期から大人・シニアまで、ライフステージに合わせたサポートを提供します。</p>
@@ -636,9 +745,11 @@
         </div>
       </section>
 
-      <!-- BLOG -->
-      <section id="blog" class="section">
-        <div class="section-header">
+      <!-- =========================
+           BLOG（BLOGブロック）
+           ========================= -->
+      <section id="blog" class="section section--blog">
+        <div class="section-header section-header--blog">
           <div class="section-label">BLOG</div>
           <h2>ブログ</h2>
           <p>発育発達・ウェルネス・教育に関するコラムを発信していきます。</p>
@@ -652,6 +763,7 @@
             </div>
             <span>Coming soon</span>
           </article>
+
           <article class="blog-item">
             <div>
               <div class="blog-meta">2025.01.01 ｜ ウェルネス</div>
@@ -662,16 +774,17 @@
         </div>
       </section>
 
-      <!-- CONTACT -->
-      <section id="contact" class="section">
-        <div class="section-header">
+      <!-- =========================
+           CONTACT（CONTACTブロック）
+           ========================= -->
+      <section id="contact" class="section section--contact">
+        <div class="section-header section-header--contact">
           <div class="section-label">CONTACT</div>
           <h2>お問い合わせ・ご相談</h2>
           <p>サービス内容に関するご質問や、導入のご相談など、こちらからお気軽にお送りください。</p>
         </div>
 
         <div class="contact-layout">
-          <!-- 左：会社へのお問い合わせ -->
           <div class="contact-inner">
             <p>
               ・会社全体に関するお問い合わせは、こちらから<br>
@@ -683,7 +796,6 @@
             </div>
           </div>
 
-          <!-- 右：各事業へのリンク -->
           <div class="contact-inner">
             <p class="contact-services-title">各事業へのお問い合わせはこちら</p>
             <ul class="contact-services-list">
@@ -711,5 +823,6 @@
   </main>
 </body>
 </html>
+
 
 
