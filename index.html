@@ -8,9 +8,8 @@
 
   <style>
     /* =========================================================
-       0) 全体カラー / 全体タイポ（デフォルト値）
-       ・基本はここが“基準”
-       ・各ブロックで変えたい場合は「6) ブロック別（テンプレ）」を使って追記する
+       0) 全体カラー / 全体タイポ（デフォルト値：一括変更用）
+       ・「スクショ部分（HERO / CONCEPT）」以外は、基本ここを触れば一括で変わる
        ========================================================= */
     :root {
       /* --- colors --- */
@@ -25,33 +24,19 @@
       --fs-nav:  14px;     /* ナビ */
       --fs-btn-nav: 16px;  /* ヘッダーボタン */
 
-      /* --- hero（トップ） --- */
-      --fs-hero-h1: 29px;  /* ページ唯一のh1 */
-      --fs-hero-sub: 20px; /* ヒーロー説明文 */
-
-      /* --- section header（各セクション見出し） --- */
+      /* --- section header（各セクション見出し：一括） --- */
       --fs-section-label: 16px; /* CONCEPT/SERVICE等のラベル */
       --fs-section-h2:    27px; /* H2 */
       --fs-section-h3:    21px; /* H3（CONCEPTの日本語サブ） */
       --fs-section-desc:  18px; /* 見出し直下の説明文（p） */
 
-      /* --- section body / cards / lists --- */
+      /* --- body / cards（SERVICE/BLOG/CONTACT等：一括） --- */
       --fs-section-body:       17px; /* 本文（必要なら使う） */
-      --fs-section-card-title: 18px; /* SERVICEカードなどの見出し */
-      --fs-section-card-text:  17px; /* SERVICEカードなどの本文 */
+      --fs-section-card-title: 18px; /* カード見出し（SERVICE等） */
+      --fs-section-card-text:  17px; /* カード本文（SERVICE/BLOG/CONTACT等） */
 
-      /* --- concept cards --- */
-      --fs-concept-title: 18px; /* Wellness/Educationカード見出し（h4） */
-      --fs-concept-text:  17px; /* Wellness/Educationカード本文（p） */
-      --fs-aspect-pill:   14px; /* 8項目のピル */
-      --fs-edu-text:      17px; /* Educationの箇条書き */
-
-      /* --- blog --- */
-      --fs-blog-item: 17px; /* blog-item全体 */
-      --fs-blog-meta: 12px; /* blog-meta */
-
-      /* --- contact --- */
-      --fs-contact-text: 17px; /* CONTACT左/右カード内の説明文 */
+      /* --- small text（BLOGのmetaなど：一括） --- */
+      --fs-meta: 12px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -154,7 +139,8 @@
     section { scroll-margin-top: 96px; }
 
     /* =========================================================
-       3) ヒーロー（TOPブロック）
+       3) ヒーロー（スクショ：TOPブロック）
+       ・ここは「スクショ部分」なので、HERO単体で調整できるように変数を内包
        ========================================================= */
     .hero {
       display: flex;
@@ -165,9 +151,9 @@
       box-shadow: 0 18px 40px rgba(15,23,42,0.08);
       margin-bottom: 80px;
 
-      /* HERO内だけで使うタイポ変数（必要ならここで局所上書き可能） */
-      --fs-h1:  var(--fs-hero-h1);
-      --fs-sub: var(--fs-hero-sub);
+      /* HERO単体の文字サイズ（ここだけ触ればHEROだけ変わる） */
+      --fs-hero-h1:  29px;  /* ページ唯一のh1 */
+      --fs-hero-sub: 20px;  /* ヒーロー説明文 */
     }
 
     .hero-left {
@@ -185,9 +171,8 @@
 
     .hero-inner { width: 100%; }
 
-    /* ページ唯一のh1 */
     .hero-copy {
-      font-size: var(--fs-h1);
+      font-size: var(--fs-hero-h1);
       font-weight: 800;
       line-height: 1.9;
       margin-bottom: 28px;
@@ -196,7 +181,7 @@
     .hero-copy span { font-weight: 800; }
 
     .hero-sub {
-      font-size: var(--fs-sub);
+      font-size: var(--fs-hero-sub);
       color: #4B5563;
       margin-bottom: 32px;
     }
@@ -234,30 +219,21 @@
 
     /* =========================================================
        4) セクション共通（CONCEPT/SERVICE/BLOG/CONTACT）
-       ・セクション単位の文字サイズはCSS変数で管理
+       ・スクショ部分以外（SERVICE/BLOG/CONTACT）は基本ここ＋:rootで一括管理
        ========================================================= */
     section.section {
       margin-bottom: 72px;
 
-      /* セクション内タイポ変数（デフォルト値） */
-      --fs-label: var(--fs-section-label); /* ラベル */
-      --fs-h2:    var(--fs-section-h2);    /* H2 */
-      --fs-h3:    var(--fs-section-h3);    /* H3 */
-      --fs-desc:  var(--fs-section-desc);  /* 見出し直下p */
+      /* セクション見出し（共通：一括） */
+      --fs-label: var(--fs-section-label);
+      --fs-h2:    var(--fs-section-h2);
+      --fs-h3:    var(--fs-section-h3);
+      --fs-desc:  var(--fs-section-desc);
 
-      --fs-body:       var(--fs-section-body);       /* 本文 */
-      --fs-card-title: var(--fs-section-card-title); /* カード見出し */
-      --fs-card-text:  var(--fs-section-card-text);  /* カード本文 */
-
-      --fs-concept-title: var(--fs-concept-title); /* CONCEPTカード見出し */
-      --fs-concept-text:  var(--fs-concept-text);  /* CONCEPTカード本文 */
-      --fs-aspect-pill:   var(--fs-aspect-pill);   /* 8項目ピル */
-      --fs-edu-text:      var(--fs-edu-text);      /* Education箇条書き */
-
-      --fs-blog-item: var(--fs-blog-item); /* BLOG1行カード */
-      --fs-blog-meta: var(--fs-blog-meta); /* BLOGメタ */
-
-      --fs-contact-text: var(--fs-contact-text); /* CONTACT本文 */
+      /* 本文 / カード（共通：一括） */
+      --fs-body:       var(--fs-section-body);
+      --fs-card-title: var(--fs-section-card-title);
+      --fs-card-text:  var(--fs-section-card-text);
     }
 
     .section-header {
@@ -338,8 +314,29 @@
     }
 
     /* =========================================================
-       5) 個別UI（CONCEPT / BLOG / CONTACT）
+       5) 個別UI
        ========================================================= */
+
+    /* =========================================================
+       CONCEPT（スクショ：CONCEPTブロック）
+       ・ここは「スクショ部分」なので、CONCEPT単体で調整できるように変数を内包
+       ========================================================= */
+    .section--concept{
+      /* CONCEPT内（カード/リスト）の文字サイズ：ここだけ触ればCONCEPTだけ変わる */
+      --fs-concept-title: 18px; /* Wellness/Educationカード見出し（h4） */
+      --fs-concept-text:  17px; /* Wellness/Educationカード本文（p） */
+      --fs-aspect-pill:   14px; /* 8項目のピル */
+      --fs-edu-text:      17px; /* Educationの箇条書き */
+    }
+
+    /* CONCEPT（見出しブロック：label/h2/h3/説明文p） */
+    .section-header--concept{
+      --fs-desc: 19px; /* “特にCONCEPTだけ19px” */
+      /* 例：必要なら見出し側も調整
+      --fs-h2: 28px;
+      --fs-h3: 22px;
+      */
+    }
 
     /* ----- CONCEPT（2カード） ----- */
     .concept-grid {
@@ -407,7 +404,7 @@
       margin: 10px 0;
     }
 
-    /* ----- BLOG ----- */
+    /* ----- BLOG（スクショ外：一括管理） ----- */
     .blog-list {
       display: flex;
       flex-direction: column;
@@ -422,18 +419,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: var(--fs-blog-item);
+
+      /* BLOGは一括管理：カード本文サイズに寄せる */
+      font-size: var(--fs-card-text);
     }
 
     .blog-meta {
-      font-size: var(--fs-blog-meta);
+      font-size: var(--fs-meta);
       color: #6B7280;
       margin-bottom: 2px;
     }
 
     .blog-title { font-weight: 600; }
 
-    /* ----- CONTACT ----- */
+    /* ----- CONTACT（スクショ外：一括管理） ----- */
     .contact-layout {
       display: flex;
       gap: 24px;
@@ -449,7 +448,8 @@
     }
 
     .contact-inner p {
-      font-size: var(--fs-contact-text);
+      /* CONTACTは一括管理：カード本文サイズに寄せる */
+      font-size: var(--fs-card-text);
       color: #4B5563;
       margin-bottom: 18px;
     }
@@ -510,68 +510,7 @@
     }
 
     /* =========================================================
-       6) ブロック別：文字サイズ調整（案A：テンプレをコメントで残す）
-       ・空のCSSルール（{ }の中が空）を作らないため、警告が出ない
-       ・調整したい時は、下のテンプレを「コピペ」か「コメント解除」して使う
-       ========================================================= */
-
-    /* --- CONCEPT（見出しブロック：label/h2/h3/説明文p） --- */
-    .section-header--concept{
-      --fs-desc: 19px; /* “特にCONCEPTだけ19px” */
-      /* 例：必要なら見出し側も調整
-      --fs-h2: 28px;
-      --fs-h3: 22px;
-      */
-    }
-
-    /* --- CONCEPT（セクション全体：カード本文/リスト等） ---
-    .section--concept{
-      --fs-concept-text: 18px;
-      --fs-aspect-pill:  15px;
-      --fs-edu-text:     18px;
-    }
-    */
-
-    /* --- SERVICE（見出しブロック：label/h2/h3/説明文p） ---
-    .section-header--service{
-      --fs-desc: 18px;
-    }
-    */
-
-    /* --- SERVICE（セクション全体：カード見出し/カード本文など） ---
-    .section--service{
-      --fs-card-title: 18px;
-      --fs-card-text:  16px;
-    }
-    */
-
-    /* --- BLOG（見出しブロック：label/h2/h3/説明文p） ---
-    .section-header--blog{
-      --fs-desc: 18px;
-    }
-    */
-
-    /* --- BLOG（セクション全体：blog-item / meta 等） ---
-    .section--blog{
-      --fs-blog-item: 16px;
-      --fs-blog-meta: 12px;
-    }
-    */
-
-    /* --- CONTACT（見出しブロック：label/h2/h3/説明文p） ---
-    .section-header--contact{
-      --fs-desc: 18px;
-    }
-    */
-
-    /* --- CONTACT（セクション全体：左右カード本文など） ---
-    .section--contact{
-      --fs-contact-text: 16px;
-    }
-    */
-
-    /* =========================================================
-       7) フッター
+       6) フッター
        ========================================================= */
     footer {
       padding: 24px 0 32px;
@@ -581,7 +520,7 @@
     }
 
     /* =========================================================
-       8) スマホ対応
+       7) スマホ対応
        ========================================================= */
     @media (max-width: 900px) {
       header { padding: 0 16px; }
@@ -629,7 +568,8 @@
     <div class="container">
 
       <!-- =========================
-           ヒーロー（TOPブロック）
+           ヒーロー（スクショ：TOPブロック）
+           ・文字サイズはCSSの .hero 内（--fs-hero-h1 / --fs-hero-sub）で単体調整
            ========================= -->
       <section class="hero" id="top">
         <div class="hero-left">
@@ -654,9 +594,9 @@
       </section>
 
       <!-- =========================
-           CONCEPT（CONCEPTブロック）
-           ・section--concept：セクション全体の調整用（将来使う）
-           ・section-header--concept：見出しだけの調整用（今使ってる）
+           CONCEPT（スクショ：CONCEPTブロック）
+           ・section--concept：CONCEPT内（カード/リスト）の文字サイズを単体調整
+           ・section-header--concept：CONCEPT見出しブロックの文字サイズを単体調整
            ========================= -->
       <section id="concept" class="section section--concept">
         <div class="section-panel section-panel--transparent">
@@ -707,10 +647,12 @@
       </section>
 
       <!-- =========================
-           SERVICE（SERVICEブロック）
+           SERVICE（スクショ外：一括管理）
+           ・見出し：:root の --fs-section-*
+           ・カード：:root の --fs-section-card-*
            ========================= -->
-      <section id="service" class="section section--service">
-        <div class="section-header section-header--service">
+      <section id="service" class="section">
+        <div class="section-header">
           <div class="section-label">SERVICE</div>
           <h2>ラインナップ</h2>
           <p>幼児期から大人・シニアまで、ライフステージに合わせたサポートを提供します。</p>
@@ -739,10 +681,10 @@
       </section>
 
       <!-- =========================
-           BLOG（BLOGブロック）
+           BLOG（スクショ外：一括管理）
            ========================= -->
-      <section id="blog" class="section section--blog">
-        <div class="section-header section-header--blog">
+      <section id="blog" class="section">
+        <div class="section-header">
           <div class="section-label">BLOG</div>
           <h2>ブログ</h2>
           <p>発育発達・ウェルネス・教育に関するコラムを発信していきます。</p>
@@ -768,10 +710,10 @@
       </section>
 
       <!-- =========================
-           CONTACT（CONTACTブロック）
+           CONTACT（スクショ外：一括管理）
            ========================= -->
-      <section id="contact" class="section section--contact">
-        <div class="section-header section-header--contact">
+      <section id="contact" class="section">
+        <div class="section-header">
           <div class="section-label">CONTACT</div>
           <h2>お問い合わせ・ご相談</h2>
           <p>サービス内容に関するご質問や、導入のご相談など、こちらからお気軽にお送りください。</p>
