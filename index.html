@@ -7,35 +7,26 @@
   <link rel="icon" type="image/png" href="/favicon.png">
 
   <style>
-    /* =========================================================
-       0) 全体カラー / 全体タイポ（デフォルト値：一括変更用）
-       ・「スクショ部分（HERO / CONCEPT）」以外は、基本ここを触れば一括で変わる
-       ========================================================= */
     :root {
-      /* --- colors --- */
       --charcoal: #1A202C;
       --orange:  #FF4500;
       --green:   #3CB371;
       --white:   #FFFFFF;
       --bg-light:#F5F7FA;
 
-      /* --- header / nav --- */
-      --fs-logo: 24px;     /* ヘッダーロゴ文字 */
-      --fs-nav:  14px;     /* ナビ */
-      --fs-btn-nav: 16px;  /* ヘッダーボタン */
+      --fs-logo: 24px;
+      --fs-nav:  14px;
+      --fs-btn-nav: 16px;
 
-      /* --- section header（各セクション見出し：一括） --- */
-      --fs-section-label: 16px; /* CONCEPT/SERVICE等のラベル */
-      --fs-section-h2:    27px; /* H2 */
-      --fs-section-h3:    21px; /* H3（CONCEPTの日本語サブ） */
-      --fs-section-desc:  18px; /* 見出し直下の説明文（p） */
+      --fs-section-label: 16px;
+      --fs-section-h2:    27px;
+      --fs-section-h3:    21px;
+      --fs-section-desc:  18px;
 
-      /* --- body / cards（SERVICE/BLOG/CONTACT等：一括） --- */
-      --fs-section-body:       17px; /* 本文（必要なら使う） */
-      --fs-section-card-title: 18px; /* カード見出し（SERVICE等） */
-      --fs-section-card-text:  17px; /* カード本文（SERVICE/BLOG/CONTACT等） */
+      --fs-section-body:       17px;
+      --fs-section-card-title: 18px;
+      --fs-section-card-text:  17px;
 
-      /* --- small text（BLOGのmetaなど：一括） --- */
       --fs-meta: 12px;
     }
 
@@ -51,9 +42,6 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* =========================================================
-       1) ヘッダー（固定ナビ）
-       ========================================================= */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -124,10 +112,7 @@
       box-shadow: 0 8px 18px rgba(0,0,0,0.12);
     }
 
-    /* =========================================================
-       2) メインレイアウト
-       ========================================================= */
-    main { padding-top: 88px; } /* 固定ヘッダー分 */
+    main { padding-top: 88px; }
 
     .container {
       max-width: 1400px;
@@ -135,13 +120,8 @@
       padding: 0 24px 80px;
     }
 
-    /* 固定ヘッダーでアンカー移動したとき、見出しが隠れないように */
     section { scroll-margin-top: 96px; }
 
-    /* =========================================================
-       3) ヒーロー（スクショ：TOPブロック）
-       ・ここは「スクショ部分」なので、HERO単体で調整できるように変数を内包
-       ========================================================= */
     .hero {
       display: flex;
       gap: 40px;
@@ -151,9 +131,8 @@
       box-shadow: 0 18px 40px rgba(15,23,42,0.08);
       margin-bottom: 80px;
 
-      /* HERO単体の文字サイズ（ここだけ触ればHEROだけ変わる） */
-      --fs-hero-h1:  29px;  /* ページ唯一のh1 */
-      --fs-hero-sub: 20px;  /* ヒーロー説明文 */
+      --fs-hero-h1:  29px;
+      --fs-hero-sub: 20px;
     }
 
     .hero-left {
@@ -186,7 +165,6 @@
       margin-bottom: 32px;
     }
 
-    /* 予備：CTAボタン（使う場合はHTML側に置く） */
     .btn-cta {
       display: inline-block;
       background: var(--orange);
@@ -217,20 +195,14 @@
       height: auto;
     }
 
-    /* =========================================================
-       4) セクション共通（CONCEPT/SERVICE/BLOG/CONTACT）
-       ・スクショ部分以外（SERVICE/BLOG/CONTACT）は基本ここ＋:rootで一括管理
-       ========================================================= */
     section.section {
       margin-bottom: 72px;
 
-      /* セクション見出し（共通：一括） */
       --fs-label: var(--fs-section-label);
       --fs-h2:    var(--fs-section-h2);
       --fs-h3:    var(--fs-section-h3);
       --fs-desc:  var(--fs-section-desc);
 
-      /* 本文 / カード（共通：一括） */
       --fs-body:       var(--fs-section-body);
       --fs-card-title: var(--fs-section-card-title);
       --fs-card-text:  var(--fs-section-card-text);
@@ -274,7 +246,6 @@
       color: #374151;
     }
 
-    /* SERVICE等の汎用カード */
     .card-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -298,7 +269,6 @@
       color: #4B5563;
     }
 
-    /* セクション全体を白カードにしたいとき用 */
     .section-panel {
       background: var(--white);
       border-radius: 18px;
@@ -306,39 +276,23 @@
       box-shadow: 0 12px 28px rgba(15,23,42,0.08);
     }
 
-    /* CONCEPTは外側の白パネルを使わない */
     .section-panel--transparent{
       background: transparent;
       box-shadow: none;
       padding: 0;
     }
 
-    /* =========================================================
-       5) 個別UI
-       ========================================================= */
-
-    /* =========================================================
-       CONCEPT（スクショ：CONCEPTブロック）
-       ・ここは「スクショ部分」なので、CONCEPT単体で調整できるように変数を内包
-       ========================================================= */
     .section--concept{
-      /* CONCEPT内（カード/リスト）の文字サイズ：ここだけ触ればCONCEPTだけ変わる */
-      --fs-concept-title: 18px; /* Wellness/Educationカード見出し（h4） */
-      --fs-concept-text:  17px; /* Wellness/Educationカード本文（p） */
-      --fs-aspect-pill:   14px; /* 8項目のピル */
-      --fs-edu-text:      17px; /* Educationの箇条書き */
+      --fs-concept-title: 18px;
+      --fs-concept-text:  17px;
+      --fs-aspect-pill:   14px;
+      --fs-edu-text:      17px;
     }
 
-    /* CONCEPT（見出しブロック：label/h2/h3/説明文p） */
     .section-header--concept{
-      --fs-desc: 19px; /* “特にCONCEPTだけ19px” */
-      /* 例：必要なら見出し側も調整
-      --fs-h2: 28px;
-      --fs-h3: 22px;
-      */
+      --fs-desc: 19px;
     }
 
-    /* ----- CONCEPT（2カード） ----- */
     .concept-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -404,7 +358,6 @@
       margin: 10px 0;
     }
 
-    /* ----- BLOG（スクショ外：一括管理） ----- */
     .blog-list {
       display: flex;
       flex-direction: column;
@@ -419,8 +372,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-
-      /* BLOGは一括管理：カード本文サイズに寄せる */
       font-size: var(--fs-card-text);
     }
 
@@ -432,7 +383,6 @@
 
     .blog-title { font-weight: 600; }
 
-    /* ----- CONTACT（スクショ外：一括管理） ----- */
     .contact-layout {
       display: flex;
       gap: 24px;
@@ -448,7 +398,6 @@
     }
 
     .contact-inner p {
-      /* CONTACTは一括管理：カード本文サイズに寄せる */
       font-size: var(--fs-card-text);
       color: #4B5563;
       margin-bottom: 18px;
@@ -509,9 +458,6 @@
       letter-spacing: 0.1em;
     }
 
-    /* =========================================================
-       6) フッター
-       ========================================================= */
     footer {
       padding: 24px 0 32px;
       text-align: center;
@@ -519,9 +465,6 @@
       color: #9CA3AF;
     }
 
-    /* =========================================================
-       7) スマホ対応
-       ========================================================= */
     @media (max-width: 900px) {
       header { padding: 0 16px; }
       nav ul { display: none; }
@@ -544,9 +487,6 @@
 </head>
 
 <body>
-  <!-- =========================
-       ヘッダー（固定）
-       ========================= -->
   <header>
     <a href="#top" class="logo">Yuhi<span>.</span>INC</a>
 
@@ -567,10 +507,6 @@
   <main>
     <div class="container">
 
-      <!-- =========================
-           ヒーロー（スクショ：TOPブロック）
-           ・文字サイズはCSSの .hero 内（--fs-hero-h1 / --fs-hero-sub）で単体調整
-           ========================= -->
       <section class="hero" id="top">
         <div class="hero-left">
           <div class="hero-inner">
@@ -593,11 +529,6 @@
         </div>
       </section>
 
-      <!-- =========================
-           CONCEPT（スクショ：CONCEPTブロック）
-           ・section--concept：CONCEPT内（カード/リスト）の文字サイズを単体調整
-           ・section-header--concept：CONCEPT見出しブロックの文字サイズを単体調整
-           ========================= -->
       <section id="concept" class="section section--concept">
         <div class="section-panel section-panel--transparent">
           <div class="section-header section-header--concept">
@@ -646,11 +577,6 @@
         </div>
       </section>
 
-      <!-- =========================
-           SERVICE（スクショ外：一括管理）
-           ・見出し：:root の --fs-section-*
-           ・カード：:root の --fs-section-card-*
-           ========================= -->
       <section id="service" class="section">
         <div class="section-header">
           <div class="section-label">SERVICE</div>
@@ -680,9 +606,6 @@
         </div>
       </section>
 
-      <!-- =========================
-           BLOG（スクショ外：一括管理）
-           ========================= -->
       <section id="blog" class="section">
         <div class="section-header">
           <div class="section-label">BLOG</div>
@@ -709,9 +632,6 @@
         </div>
       </section>
 
-      <!-- =========================
-           CONTACT（スクショ外：一括管理）
-           ========================= -->
       <section id="contact" class="section">
         <div class="section-header">
           <div class="section-label">CONTACT</div>
@@ -744,7 +664,6 @@
                   保育事業
                 </a>
               </li>
-              <!-- 事業が増えたらここに li を足すだけでOK -->
             </ul>
           </div>
         </div>
@@ -758,6 +677,4 @@
   </main>
 </body>
 </html>
-
-
 
