@@ -10,7 +10,7 @@
     /* =========================================================
        0) 全体カラー / 全体タイポ（デフォルト値）
        ・基本はここが“基準”
-       ・各ブロックで変えたい場合は、下の「6) ブロック別」だけ触る
+       ・各ブロックで変えたい場合は「6) ブロック別（テンプレ）」を使って追記する
        ========================================================= */
     :root {
       /* --- colors --- */
@@ -154,7 +154,7 @@
     section { scroll-margin-top: 96px; }
 
     /* =========================================================
-       3) ヒーローエリア（トップ）
+       3) ヒーロー（TOPブロック）
        ========================================================= */
     .hero {
       display: flex;
@@ -165,7 +165,7 @@
       box-shadow: 0 18px 40px rgba(15,23,42,0.08);
       margin-bottom: 80px;
 
-      /* --- HEROブロック内のタイポ（必要ならここを局所上書き可能） --- */
+      /* HERO内だけで使うタイポ変数（必要ならここで局所上書き可能） */
       --fs-h1:  var(--fs-hero-h1);
       --fs-sub: var(--fs-hero-sub);
     }
@@ -185,7 +185,7 @@
 
     .hero-inner { width: 100%; }
 
-    /* ページ唯一の h1 */
+    /* ページ唯一のh1 */
     .hero-copy {
       font-size: var(--fs-h1);
       font-weight: 800;
@@ -234,13 +234,12 @@
 
     /* =========================================================
        4) セクション共通（CONCEPT/SERVICE/BLOG/CONTACT）
-       ・各セクションで文字サイズを変えたい場合は
-         HTMLの section に section--xxx を付与して、下の「6) ブロック別」で上書き
+       ・セクション単位の文字サイズはCSS変数で管理
        ========================================================= */
     section.section {
       margin-bottom: 72px;
 
-      /* --- このセクション内で使うタイポ“変数”（デフォルト値） --- */
+      /* セクション内タイポ変数（デフォルト値） */
       --fs-label: var(--fs-section-label); /* ラベル */
       --fs-h2:    var(--fs-section-h2);    /* H2 */
       --fs-h3:    var(--fs-section-h3);    /* H3 */
@@ -299,7 +298,7 @@
       color: #374151;
     }
 
-    /* 汎用カード（SERVICEなど） */
+    /* SERVICE等の汎用カード */
     .card-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -511,70 +510,65 @@
     }
 
     /* =========================================================
-       6) ブロック別：文字サイズ調整（ここだけ触ればOK）
-       ・section--xxx：セクション全体（見出し/本文/カード/リスト等）に効く
-       ・section-header--xxx：見出しブロック（label/h2/h3/desc）だけに効く
+       6) ブロック別：文字サイズ調整（案A：テンプレをコメントで残す）
+       ・空のCSSルール（{ }の中が空）を作らないため、警告が出ない
+       ・調整したい時は、下のテンプレを「コピペ」か「コメント解除」して使う
        ========================================================= */
 
-    /* ---------- CONCEPT（セクション全体） ---------- */
-    .section--concept{
-      /* 例：CONCEPT全体のカード本文を少し大きくしたいなら
-      --fs-concept-text: 18px;
-      */
-    }
-
-    /* CONCEPT（見出しブロックだけ） */
+    /* --- CONCEPT（見出しブロック：label/h2/h3/説明文p） --- */
     .section-header--concept{
-      --fs-desc: 19px; /* “特にCONCEPTだけ19” ←ここ */
-      /* 例：必要なら見出し側もここで調整可能
+      --fs-desc: 19px; /* “特にCONCEPTだけ19px” */
+      /* 例：必要なら見出し側も調整
       --fs-h2: 28px;
       --fs-h3: 22px;
-      --fs-label: 16px;
       */
     }
 
-    /* ---------- SERVICE（セクション全体） ---------- */
-    .section--service{
-      /* 例：SERVICEカード本文だけ少し小さくしたいなら
-      --fs-card-text: 16px;
-      */
+    /* --- CONCEPT（セクション全体：カード本文/リスト等） ---
+    .section--concept{
+      --fs-concept-text: 18px;
+      --fs-aspect-pill:  15px;
+      --fs-edu-text:     18px;
     }
+    */
 
-    /* SERVICE（見出しブロックだけ） */
+    /* --- SERVICE（見出しブロック：label/h2/h3/説明文p） ---
     .section-header--service{
-      /* 例：
       --fs-desc: 18px;
-      */
     }
+    */
 
-    /* ---------- BLOG（セクション全体） ---------- */
+    /* --- SERVICE（セクション全体：カード見出し/カード本文など） ---
+    .section--service{
+      --fs-card-title: 18px;
+      --fs-card-text:  16px;
+    }
+    */
+
+    /* --- BLOG（見出しブロック：label/h2/h3/説明文p） ---
+    .section-header--blog{
+      --fs-desc: 18px;
+    }
+    */
+
+    /* --- BLOG（セクション全体：blog-item / meta 等） ---
     .section--blog{
-      /* 例：ブログ一覧の文字だけ調整
       --fs-blog-item: 16px;
       --fs-blog-meta: 12px;
-      */
     }
+    */
 
-    /* BLOG（見出しブロックだけ） */
-    .section-header--blog{
-      /* 例：
-      --fs-desc: 18px;
-      */
-    }
-
-    /* ---------- CONTACT（セクション全体） ---------- */
-    .section--contact{
-      /* 例：CONTACT内の本文だけ調整
-      --fs-contact-text: 16px;
-      */
-    }
-
-    /* CONTACT（見出しブロックだけ） */
+    /* --- CONTACT（見出しブロック：label/h2/h3/説明文p） ---
     .section-header--contact{
-      /* 例：
       --fs-desc: 18px;
-      */
     }
+    */
+
+    /* --- CONTACT（セクション全体：左右カード本文など） ---
+    .section--contact{
+      --fs-contact-text: 16px;
+    }
+    */
 
     /* =========================================================
        7) フッター
@@ -637,7 +631,7 @@
       <!-- =========================
            ヒーロー（TOPブロック）
            ========================= -->
-      <section class="hero hero--home" id="top">
+      <section class="hero" id="top">
         <div class="hero-left">
           <div class="hero-inner">
             <h1 class="hero-copy">
@@ -654,7 +648,6 @@
 
         <div class="hero-right">
           <div class="hero-logo-wrapper">
-            <!-- ロゴ画像（グレーの余白なし） -->
             <img src="images/rogo.jpg" alt="株式会社結灯 ロゴ">
           </div>
         </div>
@@ -662,8 +655,8 @@
 
       <!-- =========================
            CONCEPT（CONCEPTブロック）
-           ・section--concept：セクション全体のタイポ調整用
-           ・section-header--concept：見出しだけのタイポ調整用
+           ・section--concept：セクション全体の調整用（将来使う）
+           ・section-header--concept：見出しだけの調整用（今使ってる）
            ========================= -->
       <section id="concept" class="section section--concept">
         <div class="section-panel section-panel--transparent">
